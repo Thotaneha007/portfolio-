@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thota Neha | Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<!-- PARTICLE BACKGROUND -->
+<canvas id="particles"></canvas>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="logo">Neha</div>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ================= HERO (NO IMAGE) ================= -->
+<section class="hero" id="home">
+
+  <!-- Decorative orbs -->
+  <div class="hero-orb orb-1"></div>
+  <div class="hero-orb orb-2"></div>
+
+  <div class="hero-content">
+
+    <h1 class="typing-text">
+      Hi, I’m <span id="typing-name"></span>
+    </h1>
+
+    <h2>Computer Science Engineering Student</h2>
+
+    <p>
+      I build clean, responsive web interfaces, enjoy software development,
+      and I’m actively learning full-stack technologies while exploring
+      Machine Learning.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="resume.pdf" target="_blank" class="btn primary glow-hover">
+        <i class="fa-solid fa-file-arrow-down"></i> Download Resume
+      </a>
+      <a href="#portfolio" class="btn secondary glow-hover">
+        View Portfolio
+      </a>
+    </div>
+
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/neha-1a9807355" target="_blank">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="#" target="_blank">
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <h2 class="section-title">About Me</h2>
+
+  <p class="about-text">
+    I am <strong>Thota Neha</strong>, a Computer Science Engineering student
+    with an interest in web development, software engineering, and creative
+    problem solving. I enjoy learning new tools and building user-friendly,
+    visually appealing applications.
+  </p>
+
+  <div class="about-cards">
+    <div class="about-card glow-hover">
+      <h3>Projects</h3>
+      <p>Academic & practice-based projects</p>
+    </div>
+    <div class="about-card glow-hover">
+      <h3>Certificates</h3>
+      <p>Web, Database & UI/UX certifications</p>
+    </div>
+    <div class="about-card glow-hover">
+      <h3>Learning</h3>
+      <p>Full-stack development & ML</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PORTFOLIO ================= -->
+<section class="portfolio" id="portfolio">
+  <h2 class="section-title">Portfolio Showcase</h2>
+
+  <div class="portfolio-tabs">
+    <button class="tab-btn active" onclick="showTab('projects')">Projects</button>
+    <button class="tab-btn" onclick="showTab('certificates')">Certificates</button>
+    <button class="tab-btn" onclick="showTab('skills')">Skills</button>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="tab-content active" id="projects">
+    <div class="project-grid">
+      <div class="project-card glow-hover">
+        <h3>Static Website</h3>
+        <p>HTML & CSS based website</p>
+      </div>
+      <div class="project-card glow-hover">
+        <h3>Responsive Website</h3>
+        <p>Mobile-first web design</p>
+      </div>
+      <div class="project-card glow-hover">
+        <h3>SQL Database Project</h3>
+        <p>Database design & queries</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATES -->
+  <div class="tab-content" id="certificates">
+    <div class="certificate-grid">
+
+      <div class="certificate-card glow-hover" onclick="openCert('certificates/cert1.png')">
+        <img src="certificates/cert1.png">
+        <h4>Static Website Development Certification</h4>
+      </div>
+
+      <div class="certificate-card glow-hover" onclick="openCert('certificates/cert2.png')">
+        <img src="certificates/cert2.png">
+        <h4>Responsive Web Design Certification</h4>
+      </div>
+
+      <div class="certificate-card glow-hover" onclick="openCert('certificates/cert3.png')">
+        <img src="certificates/cert3.png">
+        <h4>SQL & Database Management Certification</h4>
+      </div>
+
+      <div class="certificate-card glow-hover" onclick="openCert('certificates/cert4.png')">
+        <img src="certificates/cert4.png">
+        <h4>Figma UI/UX Design Workshop</h4>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="tab-content" id="skills">
+    <div class="skills-grid">
+
+  <div class="skill"><i class="fa-brands fa-html5"></i> HTML, CSS, JavaScript</div>
+  <div class="skill"><i class="fa-brands fa-python"></i> Python</div>
+  <div class="skill"><i class="fa-solid fa-c"></i> C (Intermediate)</div>
+  <div class="skill"><i class="fa-brands fa-java"></i> Java (Beginner)</div>
+
+  <div class="skill"><i class="fa-brands fa-react"></i> React JS</div>
+  <div class="skill"><i class="fa-brands fa-node-js"></i> Node.js</div>
+  <div class="skill"><i class="fa-solid fa-database"></i> MongoDB</div>
+  <div class="skill"><i class="fa-solid fa-database"></i> SQL</div>
+
+  <div class="skill"><i class="fa-solid fa-layer-group"></i> Flexbox & Bootstrap</div>
+  <div class="skill"><i class="fa-brands fa-figma"></i> Figma</div>
+  <div class="skill"><i class="fa-brands fa-git-alt"></i> Git & GitHub</div>
+
+  <div class="skill"><i class="fa-solid fa-brain"></i> Interested in Machine Learning</div>
+
+</div>
+
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2 class="section-title">Contact Me</h2>
+
+  <form class="contact-box glow-hover" id="contactForm">
+
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="email" id="email" placeholder="Your Email">
+    <textarea id="message" placeholder="Your Message"></textarea>
+
+    <button type="submit" class="btn primary">
+      <i class="fa-solid fa-paper-plane"></i> Send Message
+    </button>
+
+    <!-- MESSAGE AREA -->
+    <p class="form-message" id="formMessage"></p>
+
+  </form>
+</section>
+
+
+<footer class="footer">
+  © 2025 Thota Neha. All Rights Reserved.
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
