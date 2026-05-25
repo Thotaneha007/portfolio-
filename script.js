@@ -57,56 +57,53 @@ function openCert(src) {
   document.body.appendChild(modal);
 }
 
-/* ================= CONTACT FORM VALIDATION ================= */
+/* ================= CONTACT FORM → MAILTO ================= */
 const form = document.getElementById("contactForm");
 const formMessage = document.getElementById("formMessage");
 
 form.addEventListener("submit", function (e) {
-  e.preventDefault(); // stop reload
+  e.preventDefault();
 
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const message = document.getElementById("message").value.trim();
 
   const nameRegex = /^[A-Za-z\s]+$/;
-  const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   formMessage.style.display = "block";
 
-  // EMPTY CHECK
   if (!name || !email || !message) {
     formMessage.textContent = "Please fill all the fields.";
     formMessage.className = "form-message error";
     return;
   }
 
-  // NAME VALIDATION
   if (!nameRegex.test(name)) {
-    formMessage.textContent =
-      "Invalid name. Only letters and spaces are allowed.";
+    formMessage.textContent = "Invalid name. Only letters and spaces are allowed.";
     formMessage.className = "form-message error";
     return;
   }
 
-  // EMAIL VALIDATION
-  if (!gmailRegex.test(email)) {
-    formMessage.textContent =
-      "Invalid email. Please use a valid @gmail.com address.";
+  if (!emailRegex.test(email)) {
+    formMessage.textContent = "Invalid email address.";
     formMessage.className = "form-message error";
     return;
   }
 
-  // SUCCESS
-  formMessage.textContent =
-    "Message sent successfully! I will get back to you soon.";
+  // Open the user's default email app with a pre-filled message to Neha
+  const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+  const body = encodeURIComponent(`Hi Neha,\n\n${message}\n\n— ${name} (${email})`);
+  window.open(`mailto:tnehausrd@gmail.com?subject=${subject}&body=${body}`, "_self");
+
+  formMessage.textContent = "Opening your email client… Message will be sent from your inbox!";
   formMessage.className = "form-message success";
 
   form.reset();
 
-  // hide after 4 seconds
   setTimeout(() => {
     formMessage.style.display = "none";
-  }, 4000);
+  }, 5000);
 });
 
 
@@ -147,3 +144,51 @@ function animateParticles() {
   requestAnimationFrame(animateParticles);
 }
 animateParticles();
+
+
+/* ================= ASK NEHA AI CHATBOT ================= */
+function toggleChat() {
+  document.getElementById("chatbotWidget").classList.toggle("active");
+}
+
+const chatResponses = {
+  internships: "Yes! Neha is actively looking for Software Engineering & Full-Stack Development internships. She is a 3rd-year B.Tech CSE student at Amrita Vishwa Vidyapeetham, Coimbatore. Feel free to reach out via the contact form or WhatsApp!",
+  research: "Neha co-authored a research paper titled 'Deepfakes: A Review of Creation and Research Trends'. It was presented at the 11th ICTIS 2026 conference in Thailand and is accepted for publication in Springer (Lecture Notes in Networks and Systems). Check the Research tab for the full paper!",
+  skills: "Neha's primary languages are Python and JavaScript. She also works with Flask, React, SQL, MongoDB, and is actively learning Full-Stack (Node.js) and exploring Machine Learning. She has hands-on experience with Gemini AI, OCR, and FastAPI.",
+  contact: "You can email Neha at tnehausrd@gmail.com, connect on LinkedIn (linkedin.com/in/neha-1a9807355), or send a WhatsApp message using the button in the Contact section below!"
+};
+
+function askPreset(key) {
+  const messagesEl = document.getElementById("chatbotMessages");
+
+  // Show user question
+  const questions = {
+    internships: "💼 Are you open to internships?",
+    research: "🎓 Tell me about your research paper!",
+    skills: "🚀 What is your main programming language?",
+    contact: "📧 How can I contact you?"
+  };
+
+  const userBubble = document.createElement("div");
+  userBubble.className = "chatbot-bubble user";
+  userBubble.textContent = questions[key];
+  messagesEl.appendChild(userBubble);
+
+  // Show typing indicator
+  const typingBubble = document.createElement("div");
+  typingBubble.className = "chatbot-bubble typing";
+  typingBubble.textContent = "Typing…";
+  messagesEl.appendChild(typingBubble);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+
+  // Show AI response after a small delay
+  setTimeout(() => {
+    typingBubble.remove();
+    const aiBubble = document.createElement("div");
+    aiBubble.className = "chatbot-bubble ai";
+    aiBubble.textContent = chatResponses[key];
+    messagesEl.appendChild(aiBubble);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }, 800);
+}
+
